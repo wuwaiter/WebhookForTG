@@ -1,0 +1,12 @@
+services:
+  webhook:
+    build: .
+    container_name: webhook-for-tg
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      ASPNETCORE_URLS: http://0.0.0.0:8080
+      ASPNETCORE_ENVIRONMENT: Production
+    restart: unless-stopped

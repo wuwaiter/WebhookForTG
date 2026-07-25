@@ -1,0 +1,35 @@
+# Git / IDE
+.git/
+.vs/
+.vscode/
+.idea/
+.cursor/
+
+# Build outputs
+bin/
+obj/
+**/publish/
+
+# Secrets — never copy into image build context
+.env
+.env.*
+!.env.example
+appsettings.local.json
+appsettings.*.local.json
+secrets.json
+
+# Docs / local tooling
+*.md
+!README.md
+hooks/
+scripts/
+Properties/
+*.http
+*.user
+*.suo
+
+# Logs / OS
+*.log
+logs/
+Thumbs.db
+.DS_Store

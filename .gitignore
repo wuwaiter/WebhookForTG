@@ -65,9 +65,6 @@ secrets.json
 # .NET user secrets
 **/Properties/launchSettings.json
 
-# Docker
-.dockerignore
-
 ## OS
 
 # Windows

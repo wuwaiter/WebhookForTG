@@ -5,7 +5,8 @@
 ## 技術規格
 
 - .NET 8 Web API
-- 無外部 NuGet 套件相依（僅使用內建 `HttpClient`）
+- `dotenv.net` 讀取 `.env`
+- 支援 Docker / Docker Compose
 
 ---
 
@@ -26,30 +27,43 @@
    - 瀏覽 `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates`
    - 在回傳 JSON 中找到 `chat.id`
 
-### 2. 設定 appsettings.json
+### 2. 設定 `.env`
 
-```json
-{
-  "LineNotify": {
-    "AccessToken": "你的 LINE Notify Token"
-  },
-  "Telegram": {
-    "BotToken": "你的 Telegram Bot Token",
-    "ChatId": "你的 Chat ID"
-  },
-  "Webhook": {
-    "SecretKey": "自訂的驗證金鑰（可留空不驗證）"
-  }
-}
+```bash
+cp .env.example .env
 ```
 
-### 3. 執行
+編輯 `.env`：
+
+```
+Telegram__BotToken=你的 Telegram Bot Token
+Telegram__ChatId=你的 Chat ID
+```
+
+> `.env` 已在 `.gitignore`，不會被 commit。
+
+### 3. 執行（本機）
 
 ```bash
 dotnet run
 ```
 
-預設會在 `http://localhost:5000` 啟動。
+預設約在 `http://localhost:5261` 啟動。
+
+### 4. 執行（Docker）
+
+```bash
+docker compose up --build -d
+```
+
+服務會在 `http://localhost:8080` 啟動。
+
+常用指令：
+
+```bash
+docker compose logs -f    # 看 log
+docker compose down       # 停止並移除容器
+```
 
 ---
 
@@ -117,12 +131,10 @@ X-Webhook-Secret: 你的金鑰
 
 ```bash
 # JSON 格式
-curl -X POST http://localhost:5000/api/webhook \
+curl -X POST http://localhost:8080/api/webhook \
   -H "Content-Type: application/json" \
-  -H "X-Webhook-Secret: YOUR_SECRET" \
   -d '{"message":"伺服器 CPU 超過 90%","title":"警告","source":"monitoring"}'
 
 # 簡易格式
-curl -X POST "http://localhost:5000/api/webhook/simple?message=Hello&title=Test" \
-  -H "X-Webhook-Secret: YOUR_SECRET"
+curl -X POST "http://localhost:8080/api/webhook/simple?message=Hello&title=Test"
 ```

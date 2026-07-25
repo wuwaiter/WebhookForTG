@@ -1,7 +1,8 @@
 using dotenv.net;
 using WebhookForTG.Services;
 
-DotEnv.Load();
+// Local: load .env if present. Docker: secrets come from env_file / environment.
+DotEnv.Load(options: new DotEnvOptions(ignoreExceptions: true));
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,18 @@ builder.Services.AddHttpClient<ITelegramService, TelegramService>();
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+// Official ASP.NET images set DOTNET_RUNNING_IN_CONTAINER=true.
+// HTTPS is handled by reverse proxy outside the container.
+var runningInContainer = string.Equals(
+    Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"),
+    "true",
+    StringComparison.OrdinalIgnoreCase);
+
+if (!runningInContainer)
+{
+    app.UseHttpsRedirection();
+}
+
 app.MapControllers();
 
 app.Run();
