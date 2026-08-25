@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KeE4ePBclxQ=",
+  "success": true,
+  "projectFilePath": "D:\\WadeDev\\WebhookForTG\\WebhookForTG.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wuwai\\AppData\\Local\\Temp\\cursor-sandbox-cache\\5d80d93050d4d90eef886a03bd08bf26\\nuget\\dotenv.net\\4.0.2\\dotenv.net.4.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

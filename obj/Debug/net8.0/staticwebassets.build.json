@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sr8VuZ34D33NffhhmuECYFZXFVJtlMUSpVWAkstEmrI=",
+  "Source": "WebhookForTG",
+  "BasePath": "_content/WebhookForTG",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
