@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebhookForTG")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0df70823f1bb5ec1bcca65ed880642a7c0c35a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f3911faea03a301411fe247a38c0d70bd8481f1f")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebhookForTG")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebhookForTG")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

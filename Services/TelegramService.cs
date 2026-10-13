@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text;
 using System.Text.Json;
 
@@ -29,7 +30,10 @@ public class TelegramService : ITelegramService
             var payload = new
             {
                 chat_id = _chatId,
-                text = message,
+                // Webhook content is untrusted. Encode it before using Telegram's
+                // HTML parse mode so characters such as <, > and & are displayed
+                // as text instead of being parsed as markup.
+                text = WebUtility.HtmlEncode(message),
                 parse_mode = "HTML"
             };
 
